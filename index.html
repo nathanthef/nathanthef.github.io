@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r星视频_游戏文化影像社区_官方品牌站</title>
+<meta name="description" content="r星视频官方网站，专注游戏文化与创作者影像的内容社区，提供原创高清视频、创作者扶持与品牌故事，打造值得信赖的内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1116'/%3E%3Cpath d='M24 18l22 14-22 14z' fill='%2338e8b0'/%3E%3Ccircle cx='48' cy='18' r='5' fill='%23ff4d6d'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --rv-bg:#0e1116;
+    --rv-bg-soft:#151a22;
+    --rv-panel:#1b212b;
+    --rv-line:#2a3340;
+    --rv-text:#e8edf4;
+    --rv-muted:#9aa7b8;
+    --rv-accent:#38e8b0;
+    --rv-accent-soft:rgba(56,232,176,.14);
+    --rv-hot:#ff4d6d;
+    --rv-gold:#f5c04a;
+    --rv-radius:14px;
+    --rv-head-h:118px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(56,232,176,.10), transparent 60%),
+      radial-gradient(900px 500px at 5% 20%, rgba(255,77,109,.08), transparent 60%),
+      var(--rv-bg);
+    color:var(--rv-text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{margin:0;line-height:1.3;}
+  p{margin:0 0 12px;}
+  ul,ol{margin:0;padding-left:20px;}
+  .rv-wrap{width:min(1180px,92%);margin:0 auto;}
+
+  /* ===== 吸顶区：公告条 + 页头 ===== */
+  .rv-sticky{position:sticky;top:0;z-index:60;}
+  .rv-notice{
+    background:linear-gradient(90deg,#38e8b0,#2fc9d8 55%,#5a8bff);
+    color:#06121a;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.2px;
+  }
+  .rv-notice-inner{
+    display:flex;align-items:center;gap:12px;
+    padding:8px 0;
+    overflow:hidden;
+  }
+  .rv-notice-tag{
+    flex:0 0 auto;
+    background:#06121a;color:#38e8b0;
+    border-radius:999px;padding:1px 10px;font-size:12px;
+  }
+  .rv-notice-track{display:flex;gap:36px;white-space:nowrap;overflow:hidden;}
+  .rv-notice-track span{flex:0 0 auto;}
+
+  .rv-header{
+    background:rgba(14,17,22,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--rv-line);
+  }
+  .rv-header-inner{
+    display:flex;align-items:center;gap:22px;
+    padding:14px 0;
+  }
+  .rv-logo{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+  .rv-logo-mark{
+    width:38px;height:38px;border-radius:11px;
+    background:linear-gradient(140deg,#38e8b0,#2f8bff);
+    display:grid;place-items:center;color:#06121a;font-weight:800;font-size:18px;
+    box-shadow:0 0 0 1px rgba(56,232,176,.4),0 6px 18px rgba(56,232,176,.18);
+  }
+  .rv-logo-name{font-size:19px;font-weight:800;letter-spacing:.5px;}
+  .rv-logo-name em{color:var(--rv-accent);font-style:normal;}
+  .rv-logo-sub{display:block;font-size:11px;color:var(--rv-muted);font-weight:400;letter-spacing:1px;}
+
+  .rv-nav{display:flex;gap:4px;flex:1 1 auto;flex-wrap:wrap;}
+  .rv-nav a{
+    padding:7px 12px;border-radius:9px;color:var(--rv-muted);
+    font-size:14px;font-weight:500;transition:.18s;
+  }
+  .rv-nav a:hover{color:var(--rv-text);background:var(--rv-panel);}
+
+  .rv-search{
+    position:relative;flex:0 0 230px;
+  }
+  .rv-search input{
+    width:100%;background:var(--rv-panel);border:1px solid var(--rv-line);
+    color:var(--rv-text);border-radius:10px;padding:8px 12px 8px 34px;
+    font-size:13.5px;outline:none;transition:.2s;
+  }
+  .rv-search input:focus{border-color:var(--rv-accent);box-shadow:0 0 0 3px var(--rv-accent-soft);}
+  .rv-search::before{
+    content:"⌕";position:absolute;left:11px;top:50%;transform:translateY(-52%);
+    color:var(--rv-muted);font-size:16px;
+  }
+  .rv-search-hint{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--rv-panel);border:1px solid var(--rv-line);
+    border-radius:10px;padding:8px 10px;font-size:12.5px;color:var(--rv-muted);
+    display:none;z-index:20;
+  }
+  .rv-search-hint.rv-show{display:block;}
+  .rv-search-hint b{color:var(--rv-accent);}
+
+  .rv-burger{
+    display:none;background:var(--rv-panel);border:1px solid var(--rv-line);
+    color:var(--rv-text);border-radius:10px;width:38px;height:36px;font-size:16px;cursor:pointer;
+  }
+
+  /* ===== 首屏 ===== */
+  .rv-hero{padding:46px 0 30px;}
+  .rv-hero-grid{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:44px;align-items:center;
+  }
+  .rv-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:2px;color:var(--rv-accent);
+    border:1px solid rgba(56,232,176,.35);border-radius:999px;
+    padding:3px 12px;background:var(--rv-accent-soft);margin-bottom:18px;
+  }
+  .rv-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--rv-accent);}
+  h1{font-size:clamp(34px,5.4vw,62px);font-weight:900;letter-spacing:-1px;}
+  h1 .rv-h1-dot{color:var(--rv-accent);}
+  .rv-hero-lead{font-size:17px;color:#c5d0de;margin:16px 0 10px;font-weight:500;}
+  .rv-hero-intro{color:var(--rv-muted);font-size:14.5px;max-width:560px;}
+  .rv-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 24px;}
+  .rv-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    border-radius:11px;padding:10px 20px;font-size:14.5px;font-weight:600;
+    border:1px solid transparent;cursor:pointer;transition:.2s;font-family:inherit;
+  }
+  .rv-btn-primary{background:var(--rv-accent);color:#06121a;box-shadow:0 8px 22px rgba(56,232,176,.22);}
+  .rv-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(56,232,176,.3);}
+  .rv-btn-ghost{background:transparent;border-color:var(--rv-line);color:var(--rv-text);}
+  .rv-btn-ghost:hover{border-color:var(--rv-accent);color:var(--rv-accent);}
+
+  .rv-hero-stats{display:flex;gap:30px;flex-wrap:wrap;}
+  .rv-stat b{display:block;font-size:24px;font-weight:800;color:var(--rv-accent);letter-spacing:-.5px;}
+  .rv-stat span{font-size:12.5px;color:var(--rv-muted);}
+
+  .rv-hero-visual{position:relative;}
+  .rv-hero-visual img{
+    width:100%;aspect-ratio:16/13;object-fit:cover;
+    border-radius:18px;border:1px solid var(--rv-line);
+    box-shadow:0 30px 70px rgba(0,0,0,.55);
+  }
+  .rv-hero-badge{
+    position:absolute;left:-16px;bottom:26px;
+    background:var(--rv-panel);border:1px solid var(--rv-line);
+    border-radius:12px;padding:10px 16px;font-size:12.5px;color:var(--rv-muted);
+    box-shadow:0 14px 30px rgba(0,0,0,.5);
+  }
+  .rv-hero-badge b{color:var(--rv-accent);font-size:16px;display:block;}
+
+  /* ===== 通用 section ===== */
+  .rv-section{padding:38px 0;}
+  .rv-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+  .rv-section-head h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;letter-spacing:-.4px;}
+  .rv-section-head h2::before{
+    content:"";display:inline-block;width:8px;height:8px;border-radius:2px;
+    background:var(--rv-accent);margin-right:11px;vertical-align:middle;
+  }
+  .rv-section-head p{color:var(--rv-muted);font-size:13.5px;margin:4px 0 0 19px;}
+  .rv-section-link{font-size:13.5px;color:var(--rv-accent);font-weight:600;white-space:nowrap;}
+  .rv-section-link:hover{text-decoration:underline;}
+
+  /* ===== 焦点 + 列表 ===== */
+  .rv-focus-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;}
+  .rv-focus-card{
+    background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:var(--rv-radius);
+    overflow:hidden;transition:.25s;
+  }
+  .rv-focus-card:hover{transform:translateY(-4px);border-color:rgba(56,232,176,.4);}
+  .rv-focus-card img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+  .rv-focus-body{padding:18px 20px 20px;}
+  .rv-tagline{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+  .rv-tag{
+    font-size:11.5px;padding:2px 9px;border-radius:999px;
+    background:var(--rv-accent-soft);color:var(--rv-accent);border:1px solid rgba(56,232,176,.25);
+  }
+  .rv-tag-hot{background:rgba(255,77,109,.13);color:var(--rv-hot);border-color:rgba(255,77,109,.3);}
+  .rv-tag-gold{background:rgba(245,192,74,.12);color:var(--rv-gold);border-color:rgba(245,192,74,.3);}
+  .rv-focus-body h3{font-size:19px;margin-bottom:8px;}
+  .rv-focus-body p{font-size:13.5px;color:var(--rv-muted);margin-bottom:12px;}
+  .rv-meta{display:flex;gap:14px;font-size:12px;color:var(--rv-muted);flex-wrap:wrap;align-items:center;}
+  .rv-meta .rv-author{color:var(--rv-text);font-weight:500;}
+
+  .rv-video-list{display:flex;flex-direction:column;gap:12px;}
+  .rv-video-item{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--rv-bg-soft);border:1px solid var(--rv-line);
+    border-radius:12px;padding:14px 16px;transition:.2s;
+  }
+  .rv-video-item:hover{border-color:rgba(56,232,176,.35);background:var(--rv-panel);}
+  .rv-video-thumb{flex:0 0 120px;border-radius:8px;overflow:hidden;}
+  .rv-video-thumb img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+  .rv-video-main{min-width:0;flex:1 1 auto;}
+  .rv-video-main h4{font-size:15px;margin-bottom:5px;}
+  .rv-video-main p{font-size:12.5px;color:var(--rv-muted);margin-bottom:8px;}
+  .rv-act{display:flex;gap:8px;flex-wrap:wrap;}
+  .rv-act button{
+    font-family:inherit;font-size:12px;color:var(--rv-muted);
+    background:transparent;border:1px solid var(--rv-line);border-radius:8px;
+    padding:3px 10px;cursor:pointer;transition:.16s;
+  }
+  .rv-act button:hover{color:var(--rv-accent);border-color:rgba(56,232,176,.5);}
+  .rv-act button.rv-on{color:var(--rv-hot);border-color:rgba(255,77,109,.5);}
+  .rv-act button.rv-saved{color:var(--rv-gold);border-color:rgba(245,192,74,.5);}
+
+  /* ===== 关键词解析长文 ===== */
+  .rv-article-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;}
+  .rv-article h3{font-size:17px;margin:22px 0 8px;color:var(--rv-accent);}
+  .rv-article h3:first-child{margin-top:0;}
+  .rv-article p{font-size:14px;color:#c2cddb;margin-bottom:12px;}
+  .rv-article-note{
+    background:var(--rv-bg-soft);border-left:3px solid var(--rv-accent);
+    border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;color:var(--rv-muted);
+  }
+  .rv-article-side{display:flex;flex-direction:column;gap:16px;}
+  .rv-side-card{
+    background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:var(--rv-radius);
+    padding:18px 20px;
+  }
+  .rv-side-card h4{font-size:15px;margin-bottom:10px;}
+  .rv-side-card ul{padding-left:18px;font-size:13px;color:var(--rv-muted);}
+  .rv-side-card li{margin-bottom:6px;}
+  .rv-side-card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:9px;margin-bottom:10px;}
+
+  /* ===== 专题 ===== */
+  .rv-topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+  .rv-topic-card{
+    background:var(--rv-bg-soft);border:1px solid var(--rv-line);border-radius:var(--rv-radius);
+    padding:20px;display:flex;flex-direction:column;gap:10px;transition:.2s;
+  }
+  .rv-topic-card:hover{border-color:rgba(56,232,176,.4);transform:translateY(-3px);}
+  .rv-topic-card h3{font-size:16px;}
+  .rv-topic-card p{font-size:13px;color:var(--rv-muted);margin:0;}
+  .rv-topic-card ol{padding-left:18px;font-size:13px;color:#b7c2d0;}
+  .rv-topic-card li{margin-bottom:5px;}
+  .rv-status{font-size:11.5px;color:var(--rv-gold);border:1px solid rgba(245,192,74,.3);border-radius:999px;padding:1px 9px;display:inline-block;align-self:flex-start;}
+  .rv-status.rv-done{color:var(--rv-accent);border-color:rgba(56,232,176,.3);}
+
+  /* ===== 作者矩阵 ===== */
+  .rv-author-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .rv-author-card{
+    display:flex;gap:14px;background:var(--rv-panel);border:1px solid var(--rv-line);
+    border-radius:var(--rv-radius);padding:18px;transition:.2s;
+  }
+  .rv-author-card:hover{border-color:rgba(56,232,176,.4);}
+  .rv-avatar{
+    flex:0 0 54px;width:54px;height:54px;border-radius:50%;
+    display:grid;place-items:center;font-weight:800;font-size:19px;color:#06121a;
+  }
+  .rv-av-1{background:linear-gradient(140deg,#38e8b0,#2f8bff);}
+  .rv-av-2{background:linear-gradient(140deg,#ff4d6d,#ff9a4d);}
+  .rv-av-3{background:linear-gradient(140deg,#f5c04a,#ff8a3d);}
+  .rv-av-4{background:linear-gradient(140deg,#8a7dff,#38e8b0);}
+  .rv-av-5{background:linear-gradient(140deg,#4dc3ff,#a77dff);}
+  .rv-av-6{background:linear-gradient(140deg,#ff8ab5,#f5c04a);}
+  .rv-author-body{min-width:0;}
+  .rv-author-body h3{font-size:15.5px;}
+  .rv-author-body .rv-field{font-size:12px;color:var(--rv-accent);margin-bottom:5px;}
+  .rv-author-body p{font-size:12.5px;color:var(--rv-muted);margin-bottom:8px;}
+  .rv-author-figures{display:flex;gap:14px;font-size:12px;color:var(--rv-muted);}
+  .rv-author-figures b{color:var(--rv-text);}
+  .rv-author-btn{
+    margin-top:9px;font-family:inherit;font-size:12px;cursor:pointer;
+    background:transparent;border:1px solid var(--rv-line);color:var(--rv-muted);
+    border-radius:8px;padding:3px 12px;transition:.18s;
+  }
+  .rv-author-btn:hover{color:var(--rv-accent);border-color:rgba(56,232,176,.5);}
+
+  /* ===== 评价 ===== */
+  .rv-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+  .rv-review{
+    background:var(--rv-bg-soft);border:1px solid var(--rv-line);
+    border-radius:12px;padding:16px 18px;
+  }
+  .rv-review:nth-child(3n){background:var(--rv-panel);}
+  .rv-review-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;gap:10px;}
+  .rv-review-head b{font-size:13.5px;}
+  .rv-stars{color:var(--rv-gold);font-size:12px;letter-spacing:1px;}
+  .rv-review p{font-size:13px;color:#c2cddb;margin:0;}
+  .rv-review small{display:block;margin-top:7px;color:var(--rv-muted);font-size:11.5px;}
+
+  /* ===== 动态 ===== */
+  .rv-news-list{display:flex;flex-direction:column;gap:12px;}
+  .rv-news-item{
+    display:flex;gap:16px;align-items:flex-start;
+    border-bottom:1px dashed var(--rv-line);padding-bottom:12px;
+  }
+  .rv-news-item:last-child{border-bottom:none;padding-bottom:0;}
+  .rv-news-date{flex:0 0 76px;font-size:12px;color:var(--rv-accent);font-weight:600;padding-top:2px;}
+  .rv-news-item h3{font-size:14.5px;margin-bottom:3px;}
+  .rv-news-item p{font-size:12.5px;color:var(--rv-muted);margin:0;}
+
+  /* ===== FAQ ===== */
+  .rv-faq details{
+    background:var(--rv-bg-soft);border:1px solid var(--rv-line);
+    border-radius:11px;padding:13px 17px;margin-bottom:10px;
+  }
+  .rv-faq summary{
+    cursor:pointer;font-size:14px;font-weight:600;list-style:none;
+    display:flex;justify-content:space-between;gap:12px;align-items:center;
+  }
+  .rv-faq summary::-webkit-details-marker{display:none;}
+  .rv-faq summary::after{content:"+";color:var(--rv-accent);font-size:18px;font-weight:400;line-height:1;}
+  .rv-faq details[open] summary::after{content:"–";}
+  .rv-faq details p{font-size:13px;color:var(--rv-muted);margin:10px 0 0;}
+
+  /* ===== 合作墙 ===== */
+  .rv-partner-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+  .rv-partner{
+    background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:11px;
+    padding:16px;text-align:center;font-size:13px;color:var(--rv-muted);
+    transition:.2s;
+  }
+  .rv-partner:hover{color:var(--rv-accent);border-color:rgba(56,232,176,.4);}
+  .rv-partner b{display:block;color:var(--rv-text);font-size:14px;margin-bottom:3px;}
+
+  /* ===== 页脚 ===== */
+  .rv-footer{
+    margin-top:34px;border-top:1px solid var(--rv-line);
+    background:linear-gradient(180deg,transparent,rgba(56,232,176,.04));
+    padding:40px 0 26px;
+  }
+  .rv-footer-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:28px;}
+  .rv-footer h4{font-size:14px;margin-bottom:12px;color:var(--rv-text);}
+  .rv-footer p,.rv-footer li,.rv-footer a{font-size:12.5px;color:var(--rv-muted);}
+  .rv-footer ul{list-style:none;padding-left:0;}
+  .rv-footer li{margin-bottom:7px;}
+  .rv-footer a:hover{color:var(--rv-accent);}
+  .rv-footer-bottom{
+    margin-top:28px;padding-top:18px;border-top:1px solid var(--rv-line);
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-size:12px;color:var(--rv-muted);
+  }
+
+  /* ===== 回到顶部 / 弹窗 / Toast ===== */
+  .rv-top{
+    position:fixed;right:22px;bottom:22px;z-index:70;
+    width:44px;height:44px;border-radius:12px;border:1px solid var(--rv-line);
+    background:var(--rv-panel);color:var(--rv-accent);font-size:18px;cursor:pointer;
+    display:none;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.5);
+  }
+  .rv-top.rv-show{display:grid;}
+
+  .rv-modal-mask{
+    position:fixed;inset:0;background:rgba(4,7,11,.72);backdrop-filter:blur(4px);
+    z-index:90;display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .rv-modal-mask.rv-show{display:flex;}
+  .rv-modal{
+    width:min(520px,100%);background:var(--rv-panel);border:1px solid var(--rv-line);
+    border-radius:16px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.7);
+    max-height:82vh;overflow:auto;
+  }
+  .rv-modal h3{font-size:18px;margin-bottom:10px;}
+  .rv-modal p{font-size:13.5px;color:var(--rv-muted);}
+  .rv-modal-close{
+    float:right;background:transparent;border:1px solid var(--rv-line);color:var(--rv-muted);
+    border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:15px;line-height:1;
+  }
+  .rv-modal-close:hover{color:var(--rv-hot);border-color:rgba(255,77,109,.5);}
+  .rv-modal ul{padding-left:18px;font-size:13px;color:#c2cddb;}
+  .rv-modal li{margin-bottom:6px;}
+
+  .rv-toast{
+    position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+    background:#06121a;border:1px solid rgba(56,232,176,.5);color:var(--rv-accent);
+    padding:9px 20px;border-radius:999px;font-size:13px;z-index:120;
+    opacity:0;pointer-events:none;transition:.28s;
+  }
+  .rv-toast.rv-show{opacity:1;transform:translate(-50%,0);}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:980px){
+    .rv-hero-grid,.rv-focus-grid,.rv-article-grid{grid-template-columns:minmax(0,1fr);}
+    .rv-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .rv-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (max-width:760px){
+    .rv-nav{
+      display:none;flex-direction:column;position:absolute;left:0;right:0;
+      top:100%;background:var(--rv-panel);border-bottom:1px solid var(--rv-line);
+      padding:10px 6%;gap:2px;z-index:80;
+    }
+    .rv-nav.rv-open{display:flex;}
+    .rv-header-inner{position:relative;flex-wrap:wrap;}
+    .rv-search{flex:1 1 100%;order:5;}
+    .rv-burger{display:block;}
+    .rv-author-grid,.rv-review-grid{grid-template-columns:minmax(0,1fr);}
+    .rv-topic-grid{grid-template-columns:minmax(0,1fr);}
+    .rv-partner-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .rv-footer-grid{grid-template-columns:minmax(0,1fr);}
+    .rv-hero-badge{left:8px;}
+    .rv-video-thumb{flex-basis:96px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important;}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶：公告条 + 页头 -->
+<div class="rv-sticky">
+  <div class="rv-notice" role="region" aria-label="站内公告">
+    <div class="rv-wrap rv-notice-inner">
+      <span class="rv-notice-tag">官方发布</span>
+      <div class="rv-notice-track">
+        <span>「夜行洛圣都」城市影像企划 11·28 上线，首批 12 支原创短片开放预约</span>
+        <span>创作者扶持计划第 6 期报名中，本期新增 30 个高清制作名额</span>
+        <span>年度社区投票通道已开启，选出你心中的年度精品内容</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="rv-header">
+    <div class="rv-wrap rv-header-inner">
+      <a class="rv-logo" href="#rv-home" aria-label="r星视频官方网站首页">
+        <span class="rv-logo-mark">R</span>
+        <span>
+          <span class="rv-logo-name">r星<em>视频</em></span>
+          <span class="rv-logo-sub">GAME CINEMA COMMUNITY</span>
+        </span>
+      </a>
+      <button class="rv-burger" id="rvBurger" aria-label="展开导航菜单" aria-expanded="false">☰</button>
+      <nav class="rv-nav" id="rvNav" aria-label="主导航">
+        <a href="#rv-home">首页</a>
+        <a href="#rv-focus">焦点内容</a>
+        <a href="#rv-article">品牌解析</a>
+        <a href="#rv-topics">专题企划</a>
+        <a href="#rv-authors">创作者</a>
+        <a href="#rv-reviews">社区口碑</a>
+        <a href="#rv-news">企业动态</a>
+        <a href="#rv-faq">帮助中心</a>
+      </nav>
+      <div class="rv-search">
+        <input type="search" id="rvSearchInput" placeholder="搜索视频、创作者、专题" aria-label="站内搜索">
+        <div class="rv-search-hint" id="rvSearchHint"></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main>
+
+  <!-- S2 / M1 品牌首屏 -->
+  <section class="rv-hero" id="rv-home">
+    <div class="rv-wrap rv-hero-grid">
+      <div>
+        <span class="rv-eyebrow">r星视频 · 官方网站</span>
+        <h1>r星视频<span class="rv-h1-dot">。</span></h1>
+        <p class="rv-hero-lead">把游戏里的世界，拍成值得收藏的影像。</p>
+        <p class="rv-hero-intro">
+          作为深耕游戏文化影像的垂直内容品牌，r星视频官方网站面向玩家与创作者持续开放高品质原创内容。我们以专业制作与真实表达为底色，构建一个值得信赖的内容生态：这里有深度测评、创作幕后、城市探索与人物访谈，也有陪伴每一位创作者成长的社区与工具。企业坚持用户至上，以匠心打磨每一帧画面，让游戏文化被更多人看见。
+        </p>
+        <div class="rv-hero-actions">
+          <a class="rv-btn rv-btn-primary" href="#rv-focus">观看本期精选</a>
+          <button class="rv-btn rv-btn-ghost" id="rvOpenSubmit">创作者投稿</button>
+          <button class="rv-btn rv-btn-ghost" id="rvShareBtn">分享官网</button>
+        </div>
+        <div class="rv-hero-stats">
+          <div class="rv-stat"><b>2,860+</b><span>原创高清作品</span></div>
+          <div class="rv-stat"><b>148万</b><span>社区创作者关注</span></div>
+          <div class="rv-stat"><b>96.4%</b><span>年度用户好评率</span></div>
+        </div>
+      </div>
+      <div class="rv-hero-visual">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 650'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2312202e'/%3E%3Cstop offset='.55' stop-color='%23213a52'/%3E%3Cstop offset='1' stop-color='%23f08a4b'/%3E%3C/linearGradient%3E%3ClinearGradient id='road' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231b212b'/%3E%3Cstop offset='1' stop-color='%232d3a49'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='650' fill='url(%23sky)'/%3E%3Ccircle cx='610' cy='150' r='58' fill='%23ffd9a0' opacity='.9'/%3E%3Ccircle cx='610' cy='150' r='110' fill='%23ffb066' opacity='.18'/%3E%3Cpath d='M0 430 L140 330 L260 392 L390 300 L520 372 L660 292 L800 356 L800 650 L0 650 Z' fill='%23162433'/%3E%3Cpath d='M0 500 L180 430 L320 486 L470 418 L640 480 L800 430 L800 650 L0 650 Z' fill='%230f1a26'/%3E%3Cpath d='M0 560 L800 520 L800 650 L0 650 Z' fill='url(%23road)'/%3E%3Cg stroke='%2338e8b0' stroke-width='6' opacity='.85'%3E%3Cpath d='M60 640 L330 520'/%3E%3Cpath d='M430 520 L740 630'/%3E%3C/g%3E%3Cg fill='%230a1017'%3E%3Crect x='470' y='430' width='150' height='60' rx='16'/%3E%3Crect x='500' y='412' width='86' height='30' rx='12'/%3E%3C/g%3E%3Ccircle cx='505' cy='492' r='17' fill='%23060a0f' stroke='%2338e8b0' stroke-width='3'/%3E%3Ccircle cx='588' cy='492' r='17' fill='%23060a0f' stroke='%23ff4d6d' stroke-width='3'/%3E%3Cg fill='%23ffd9a0' opacity='.9'%3E%3Ccircle cx='120' cy='90' r='2.6'/%3E%3Ccircle cx='210' cy='150' r='2'/%3E%3Ccircle cx='300' cy='70' r='2.4'/%3E%3Ccircle cx='390' cy='120' r='2'/%3E%3Ccircle cx='700' cy='80' r='2.2'/%3E%3C/g%3E%3Cg stroke='%2338e8b0' stroke-width='2' opacity='.6' fill='none'%3E%3Ccircle cx='610' cy='150' r='86'/%3E%3Ccircle cx='610' cy='150' r='130'/%3E%3C/g%3E%3C/svg%3E"
+             alt="r星视频品牌首屏主视觉：黄昏城市天际线与游戏赛道光影" width="800" height="650">
+        <div class="rv-hero-badge"><b>本期主推</b>《夜行洛圣都 · 序章》4K 原创短片</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 焦点内容 + 视频列表 -->
+  <section class="rv-section" id="rv-focus">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>焦点内容精选</h2>
+          <p>r星视频编辑部每周挑选值得反复观看的原创影像，覆盖深度测评与创作幕后。</p>
+        </div>
+        <a class="rv-section-link" href="#rv-topics">进入全部专题 →</a>
+      </div>
+
+      <div class="rv-focus-grid">
+        <article class="rv-focus-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231b2c3d'/%3E%3Cstop offset='1' stop-color='%2338e8b0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23g1)'/%3E%3Cg fill='none' stroke='%23061018' stroke-width='3' opacity='.5'%3E%3Cpath d='M0 300 L640 260'/%3E%3Cpath d='M0 240 L640 200'/%3E%3C/g%3E%3Cg fill='%23061018'%3E%3Crect x='70' y='150' width='190' height='110' rx='14'/%3E%3Crect x='290' y='110' width='130' height='150' rx='14'/%3E%3Crect x='440' y='170' width='150' height='90' rx='14'/%3E%3C/g%3E%3Cg fill='%2338e8b0' opacity='.9'%3E%3Crect x='92' y='176' width='40' height='12' rx='6'/%3E%3Crect x='312' y='136' width='40' height='12' rx='6'/%3E%3Crect x='462' y='196' width='40' height='12' rx='6'/%3E%3C/g%3E%3Ccircle cx='560' cy='70' r='26' fill='%23ff4d6d' opacity='.9'/%3E%3C/svg%3E"
+               alt="深度测评焦点内容：城市赛道光影构成解析封面" width="640" height="360" loading="lazy">
+          <div class="rv-focus-body">
+            <div class="rv-tagline">
+              <span class="rv-tag rv-tag-hot">本周焦点</span>
+              <span class="rv-tag">深度测评</span>
+              <span class="rv-tag">4K 高清</span>
+            </div>
+            <h3>《光影构成课》：一支游戏短片如何用 7 个镜头讲完一座城</h3>
+            <p>从环境光到镜头运动，r星视频制作组拆解原创短片《夜行洛圣都》的影像逻辑，逐帧说明色彩、景别与节奏在游戏文化表达中的作用，适合想提升画面叙事的创作者反复观看。</p>
+            <div class="rv-meta">
+              <span class="rv-author">作者：林照野</span>
+              <span>播放 12.6万</span>
+              <span>点赞 9,840</span>
+              <span>收藏 4,215</span>
+            </div>
+            <div class="rv-act" data-video="rv-focus-1" style="margin-top:12px;">
+              <button data-act="like">♡ 点赞</button>
+              <button data-act="save">☆ 收藏</button>
+              <button data-act="copy">⧉ 复制链接</button>
+              <button data-act="report">⚑ 反馈</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="rv-video-list" id="rvVideoList">
+          <article class="rv-video-item">
+            <div class="rv-video-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 135'%3E%3Crect width='240' height='135' fill='%232a3340'/%3E%3Cpath d='M0 100 L80 66 L150 92 L240 54 L240 135 L0 135 Z' fill='%2338e8b0' opacity='.35'/%3E%3Ccircle cx='190' cy='36' r='18' fill='%23ff4d6d' opacity='.8'/%3E%3C/svg%3E"
+                   alt="创作幕后：动作捕捉棚内景缩略图" width="240" height="135" loading="lazy">
+            </div>
+            <div class="rv-video-main">
+              <h4>创作幕后：一次动作捕捉的 48 小时</h4>
+              <p>完整记录从脚本围读到动捕收工的全流程，含 6 条现场经验。</p>
+              <div class="rv-meta"><span class="rv-author">陈拾光</span><span>播放 8.2万</span><span>点赞 6,102</span></div>
+              <div class="rv-act" data-video="rv-focus-2">
+                <button data-act="like">♡ 点赞</button>
+                <button data-act="save">☆ 收藏</button>
+                <button data-act="copy">⧉ 复制链接</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="rv-video-item">
+            <div class="rv-video-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 135'%3E%3Crect width='240' height='135' fill='%23151a22'/%3E%3Cg fill='%23f5c04a' opacity='.85'%3E%3Crect x='24' y='86' width='18' height='34'/%3E%3Crect x='58' y='62' width='18' height='58'/%3E%3Crect x='92' y='44' width='18' height='76'/%3E%3Crect x='126' y='70' width='18' height='50'/%3E%3C/g%3E%3Cpath d='M160 110 L210 30' stroke='%2338e8b0' stroke-width='4' fill='none'/%3E%3C/svg%3E"
+                   alt="行业观察：游戏影像数据趋势柱状图缩略图" width="240" height="135" loading="lazy">
+            </div>
+            <div class="rv-video-main">
+              <h4>行业观察：游戏影像内容正在经历哪些变化</h4>
+              <p>用 5 组社区数据说明观众偏爱什么、创作者该拍什么。</p>
+              <div class="rv-meta"><span class="rv-author">苏晚舟</span><span>播放 6.7万</span><span>点赞 5,208</span></div>
+              <div class="rv-act" data-video="rv-focus-3">
+                <button data-act="like">♡ 点赞</button>
+                <button data-act="save">☆ 收藏</button>
+                <button data-act="copy">⧉ 复制链接</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="rv-video-item">
+            <div class="rv-video-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 135'%3E%3Crect width='240' height='135' fill='%23213a52'/%3E%3Ccircle cx='70' cy='60' r='30' fill='%2338e8b0' opacity='.5'/%3E%3Ccircle cx='140' cy='80' r='22' fill='%23ff8ab5' opacity='.55'/%3E%3Cpath d='M0 118 L240 98 L240 135 L0 135 Z' fill='%23061018'/%3E%3C/svg%3E"
+                   alt="人物访谈：独立短片导演对谈缩略图" width="240" height="135" loading="lazy">
+            </div>
+            <div class="rv-video-main">
+              <h4>人物访谈：把玩家故事拍成剧情短片的年轻人</h4>
+              <p>对谈独立导演阿岚，聊非科班创作者如何建立自己的影像语言。</p>
+              <div class="rv-meta"><span class="rv-author">周叙</span><span>播放 5.4万</span><span>点赞 4,376</span></div>
+              <div class="rv-act" data-video="rv-focus-4">
+                <button data-act="like">♡ 点赞</button>
+                <button data-act="save">☆ 收藏</button>
+                <button data-act="copy">⧉ 复制链接</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="rv-video-item">
+            <div class="rv-video-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 135'%3E%3Crect width='240' height='135' fill='%2312202e'/%3E%3Cg stroke='%235a8bff' stroke-width='3' fill='none' opacity='.8'%3E%3Cpath d='M20 110 L60 60 L100 88 L150 40 L200 76 L225 48'/%3E%3C/g%3E%3Ccircle cx='150' cy='40' r='7' fill='%2338e8b0'/%3E%3C/svg%3E"
+                   alt="实用技巧：低成本调色流程示意缩略图" width="240" height="135" loading="lazy">
+            </div>
+            <div class="rv-video-main">
+              <h4>实用技巧：三步完成游戏短片的电影感调色</h4>
+              <p>不依赖复杂插件，用基础波形与曲线做出统一的影调。</p>
+              <div class="rv-meta"><span class="rv-author">程一白</span><span>播放 4.9万</span><span>点赞 3,980</span></div>
+              <div class="rv-act" data-video="rv-focus-5">
+                <button data-act="like">♡ 点赞</button>
+                <button data-act="save">☆ 收藏</button>
+                <button data-act="copy">⧉ 复制链接</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M15 关键词解析长文 -->
+  <section class="rv-section" id="rv-article">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>r星视频品牌深度解析</h2>
+          <p>为什么一个游戏文化影像品牌，值得被认真对待。</p>
+        </div>
+      </div>
+
+      <div class="rv-article-grid">
+        <div class="rv-article">
+          <h3>一、从一段画面出发：r星视频的内容原点</h3>
+          <p>r星视频并不是从流量逻辑里长出来的。它最早的形态，是几个长期在游戏里取景的玩家，把各自录下的片段剪成短篇，互相交换看法。那时没有平台、没有评分、也没有创作者扶持，只有一件事被反复确认：游戏世界的画面，本身值得被当成影像来对待。正是这个朴素的判断，构成了r星视频官方网站今天全部内容策略的原点——我们相信高品质的原创表达，比任何单一热点都更能留住人。</p>
+          <p>随着社区规模扩大，r星视频逐步建立起自己的内容标准：画面信息要能被观众读懂，叙事节奏要经得起二刷，测评与幕后要给出可执行的细节。这些标准看似苛刻，却让品牌在垂直领域里慢慢积累起口碑。很多用户第一次来到官网，是因为一支喜欢的短片；留下来，是因为他们发现这里的内容始终如一地认真。对一家企业而言，这种持续运营的耐心，本身就是最有说服力的品牌故事。</p>
+
+          <h3>二、内容生态的三个支点：创作者、工具与社区</h3>
+          <p>第一个支点是创作者。r星视频把创作者视为内容生态的起点，而不是素材来源。我们为签约与入驻创作者提供选题建议、拍摄规范、剪辑工作流与发布节奏的全流程支持，并通过官方发布渠道给予稳定曝光。创作者在社区里获得的反馈，会反哺到下一支作品，形成正向循环。这也是为什么我们在作者矩阵里坚持展示真实的作品数与简介，而不是只放一张好看的头像。</p>
+          <p>第二个支点是工具。面向大量非科班创作者，r星视频在站内提供了脚本灵感、标题建议与剪辑思路等辅助能力，帮助大家把想法落成可执行的分镜。工具的价值不在于替代创作，而在于降低第一支作品的门槛。第三个支点是社区：评论、点赞、收藏、投票与投稿入口共同构成互动层，让观看不再是单向消耗，而是一次可参与的交流。一个健康的社区，能让专业内容与真实表达同时存在，也能让新人有被看见的机会。</p>
+
+          <h3>三、品牌如何被信任：透明、责任与长期主义</h3>
+          <p>游戏文化内容天然容易被误解。r星视频的做法是把标准公开：哪些内容属于原创、哪些使用授权素材、测评是否接受品牌合作、数据如何统计，都在帮助中心与页面说明里写清楚。这种透明，是对用户至上的具体落实，也是企业社会责任的底线。我们更愿意用可验证的细节换取信任，而不是用夸张的承诺换取点击。</p>
+          <p>长期主义则体现在节奏上。r星视频不追逐短期爆款，而是按季度推进专题企划，按年度沉淀品牌影像档案。我们鼓励创作者反复打磨一支作品，也接受某些内容需要更久才能被理解。正是这种不着急的态度，让品牌在行业里拥有稳定的影响力。未来，r星视频会继续在垂直领域深耕，把更多元的视角、更包容的表达带进社区，让每一位用户都能在这里找到属于自己的那一帧。</p>
+
+          <h3>四、面向未来的官方承诺</h3>
+          <p>对于新加入的创作者，官网承诺三件事：第一，所有官方活动与比赛报名信息通过公告条与动态区同步发布，不设隐藏门槛；第二，内容审核与推荐规则可查，用户可随时反馈；第三，创作者的作品与账号数据归属清晰，下载与导出渠道保持开放。这些承诺并非口号，而是r星视频持续运营的日常。我们相信，一家值得信赖的视频品牌，应该让每一次上传、每一次投票、每一次分享都有明确的回应。</p>
+          <p>如果你也在游戏里看见过值得留下的画面，欢迎通过投稿入口把作品交给r星视频。这里不只需要技术完美的人，也需要愿意认真讲故事的人。真实与温暖，是这个社区愿意长期守护的东西。</p>
+
+          <div class="rv-article-note">关键词解析小结：r星视频以原创高清影像为核心，围绕创作者、工具与社区搭建内容生态，以透明规则与长期主义建立品牌口碑，持续在游戏文化这一垂直领域深耕。</div>
+        </div>
+
+        <div class="rv-article-side">
+          <div class="rv-side-card">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23151a22'/%3E%3Cg fill='%2338e8b0' opacity='.7'%3E%3Ccircle cx='90' cy='80' r='8'/%3E%3Ccircle cx='140' cy='120' r='5'/%3E%3Ccircle cx='200' cy='70' r='6'/%3E%3C/g%3E%3Cpath d='M0 220 Q120 150 240 200 T480 170 L480 270 L0 270 Z' fill='%232a3340'/%3E%3Cpath d='M40 250 L90 190 L150 220 L210 160 L290 210 L360 150 L440 200' stroke='%23ff4d6d' stroke-width='4' fill='none' opacity='.85'/%3E%3C/svg%3E"
+                 alt="品牌解析配图：内容生态数据曲线示意" width="480" height="270" loading="lazy">
+            <h4>解析要点速览</h4>
+            <ul>
+              <li>内容原点：把游戏画面当影像对待</li>
+              <li>生态支点：创作者、工具、社区</li>
+              <li>信任来源：规则透明、责任明确</li>
+              <li>长期策略：季度企划、年度档案</li>
+            </ul>
+          </div>
+          <div class="rv-side-card">
+            <h4>年度推荐关键词</h4>
+            <p style="font-size:13px;color:var(--rv-muted);margin-bottom:10px;">面向社区的官方评价维度，帮助创作者理解什么样的内容更受欢迎。</p>
+            <div class="rv-tagline">
+              <span class="rv-tag">原创</span>
+              <span class="rv-tag">高清</span>
+              <span class="rv-tag">真实</span>
+              <span class="rv-tag">专业</span>
+              <span class="rv-tag">陪伴</span>
+              <span class="rv-tag">品质</span>
+              <span class="rv-tag">成长</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M4 专题企划 -->
+  <section class="rv-section" id="rv-topics">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>专题企划与品牌故事</h2>
+          <p>r星视频以季度为节奏推进专题企划，每一组内容都可被追溯与回看。</p>
+        </div>
+        <a class="rv-section-link" href="#rv-news">查看更新日志 →</a>
+      </div>
+
+      <div class="rv-topic-grid">
+        <article class="rv-topic-card">
+          <span class="rv-status">更新中 · 第 3 期</span>
+          <h3>专题 01｜夜行洛圣都</h3>
+          <p>以城市夜行视角记录游戏世界的生活质感，探索在地文化与影像表达的交叉点。</p>
+          <ol>
+            <li>序章：一条街的十二种光</li>
+            <li>在地文化：玩家如何理解自己的城市</li>
+            <li>幕后：夜拍设备与环境光控制</li>
+          </ol>
+        </article>
+
+        <article class="rv-topic-card">
+          <span class="rv-status rv-done">已完结 · 5 支</span>
+          <h3>专题 02｜创作者成长季</h3>
+          <p>邀请不同阶段的创作者讲述自己的第一支作品，用真实经验陪伴新加入的社区成员。</p>
+          <ol>
+            <li>从手机拍摄到专业流程的三年</li>
+            <li>一次失败的调色经历</li>
+            <li>如何在评论区找到合作伙伴</li>
+          </ol>
+        </article>
+
+        <article class="rv-topic-card">
+          <span class="rv-status">报名中</span>
+          <h3>专题 03｜城市探索挑战赛</h3>
+          <p>面向全社区开放的比赛企划，围绕城市与游戏场景提交 3 分钟以内短片，官方提供展映位。</p>
+          <ol>
+            <li>参赛规则与作品上传说明</li>
+            <li>历届优秀作品回看</li>
+            <li>社区投票与评审团名单</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- M5 创作者矩阵 -->
+  <section class="rv-section" id="rv-authors">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>创作者矩阵</h2>
+          <p>他们是r星视频内容生态的核心力量，也是社区里最真实的声音。</p>
+        </div>
+      </div>
+
+      <div class="rv-author-grid">
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-1">林</div>
+          <div class="rv-author-body">
+            <h3>林照野</h3>
+            <div class="rv-field">深度测评 · 影像拆解</div>
+            <p>六年游戏影像作者，擅长把复杂的画面语言拆成可执行的步骤。作品以冷静、克制著称，坚持每支视频给出可复用的拍摄结论。</p>
+            <div class="rv-author-figures"><span>作品 <b>126</b></span><span>关注 <b>18.4万</b></span></div>
+            <button class="rv-author-btn" data-author="林照野">查看档案</button>
+          </div>
+        </article>
+
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-2">陈</div>
+          <div class="rv-author-body">
+            <h3>陈拾光</h3>
+            <div class="rv-field">创作幕后 · 现场记录</div>
+            <p>前纪录片摄影助理，习惯在片场记下每个细节。入驻r星视频后专注动捕与拍摄现场记录，希望让幕后不再神秘。</p>
+            <div class="rv-author-figures"><span>作品 <b>94</b></span><span>关注 <b>12.7万</b></span></div>
+            <button class="rv-author-btn" data-author="陈拾光">查看档案</button>
+          </div>
+        </article>
+
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-3">苏</div>
+          <div class="rv-author-body">
+            <h3>苏晚舟</h3>
+            <div class="rv-field">行业观察 · 数据解读</div>
+            <p>从社区运营转做内容分析，习惯用数据回答创作问题。她的视频常带图表与样本说明，被许多新人当作入门参考。</p>
+            <div class="rv-author-figures"><span>作品 <b>71</b></span><span>关注 <b>9.8万</b></span></div>
+            <button class="rv-author-btn" data-author="苏晚舟">查看档案</button>
+          </div>
+        </article>
+
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-4">周</div>
+          <div class="rv-author-body">
+            <h3>周叙</h3>
+            <div class="rv-field">人物访谈 · 情感故事</div>
+            <p>喜欢在镜头前听别人说话。访谈风格温和不设防，擅长在普通玩家身上找到打动人的细节，是社区里公认的倾听者。</p>
+            <div class="rv-author-figures"><span>作品 <b>58</b></span><span>关注 <b>7.6万</b></span></div>
+            <button class="rv-author-btn" data-author="周叙">查看档案</button>
+          </div>
+        </article>
+
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-5">程</div>
+          <div class="rv-author-body">
+            <h3>程一白</h3>
+            <div class="rv-field">实用技巧 · 剪辑流程</div>
+            <p>职业剪辑师，业余时间做教学。主张工具为内容服务，课程里几乎不推销插件，只讲清楚每一步为什么这样做。</p>
+            <div class="rv-author-figures"><span>作品 <b>140</b></span><span>关注 <b>15.2万</b></span></div>
+            <button class="rv-author-btn" data-author="程一白">查看档案</button>
+          </div>
+        </article>
+
+        <article class="rv-author-card">
+          <div class="rv-avatar rv-av-6">阿</div>
+          <div class="rv-author-body">
+            <h3>阿岚</h3>
+            <div class="rv-field">剧情短片 · 独立创作</div>
+            <p>非科班出身的独立导演，作品常从玩家日常取材。她相信小成本也能拍出真诚的叙事，正在筹备自己的第一部长片。</p>
+            <div class="rv-author-figures"><span>作品 <b>39</b></span><span>关注 <b>6.3万</b></span></div>
+            <button class="rv-author-btn" data-author="阿岚">查看档案</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 用户评价 -->
+  <section class="rv-section" id="rv-reviews">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>社区口碑与用户评价</h2>
+          <p>来自创作者与观众的真实反馈，是r星视频持续运营的底气。</p>
+        </div>
+      </div>
+
+      <div class="rv-review-grid">
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@夜航船</b><span class="rv-stars">★★★★★</span></div>
+          <p>从第一期专题追到现在，最打动我的是他们真的会听创作者的意见。提过的剪辑规范问题，下个季度就补上了说明文档。</p>
+          <small>资深观众 · 关注 3 年</small>
+        </article>
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@半山雾</b><span class="rv-stars">★★★★★</span></div>
+          <p>作为新人，第一次投稿就收到了编辑的逐条反馈，指出了两个镜头衔接的节奏问题。这种反馈在别处很少见，很珍贵。</p>
+          <small>新入驻创作者</small>
+        </article>
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@旧胶片盒子</b><span class="rv-stars">★★★★☆</span></div>
+          <p>内容质量稳定，高清资源下载也方便。希望日后能增加更多移动端离线观看的选项，通勤时看长片会更省心。</p>
+          <small>付费会员 · 关注 2 年</small>
+        </article>
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@洛圣都的雨</b><span class="rv-stars">★★★★★</span></div>
+          <p>《光影构成课》我反复看了四遍。它不是空谈审美，而是给出具体机位和参数，照着练真的能提升。</p>
+          <small>影像爱好者</small>
+        </article>
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@周末剪片子</b><span class="rv-stars">★★★★☆</span></div>
+          <p>专题企划的节奏很舒服，不追热点。唯一想说的是有些访谈偏长，如果能提供分段章节会更好用。</p>
+          <small>创作者 · 关注 1 年</small>
+        </article>
+        <article class="rv-review">
+          <div class="rv-review-head"><b>@一帧之间</b><span class="rv-stars">★★★★★</span></div>
+          <p>比赛报名的流程透明，评审意见公开，社区投票结果也能查到。这种认真让参与的人愿意再报名下一次。</p>
+          <small>挑战赛参赛者</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- M10 企业动态 + M11 合作品牌 -->
+  <section class="rv-section" id="rv-news">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>企业动态与合作伙伴</h2>
+          <p>官方发布、内容更新与长期伙伴，共同支撑品牌的持续运营。</p>
+        </div>
+        <a class="rv-section-link" href="#rv-faq">了解合作方式 →</a>
+      </div>
+
+      <div class="rv-focus-grid">
+        <div class="rv-news-list">
+          <article class="rv-news-item">
+            <span class="rv-news-date">2026.11.18</span>
+            <div>
+              <h3>创作者扶持计划第 6 期开放报名</h3>
+              <p>本期新增 30 个高清制作名额，提供拍摄场地支持与一对一剪辑指导，报名入口在投稿页同步开放。</p>
+            </div>
+          </article>
+          <article class="rv-news-item">
+            <span class="rv-news-date">2026.11.09</span>
+            <div>
+              <h3>「夜行洛圣都」专题首批短片完成制作</h3>
+              <p>12 支原创短片进入终审，画面规格统一为 4K，专题页将于本月末上线并提供幕后花絮。</p>
+            </div>
+          </article>
+          <article class="rv-news-item">
+            <span class="rv-news-date">2026.10.27</span>
+            <div>
+              <h3>站内搜索与标签筛选完成升级</h3>
+              <p>新版检索支持按主题、作者与时长组合筛选，官方内容优先展示，历史作品可完整追溯。</p>
+            </div>
+          </article>
+          <article class="rv-news-item">
+            <span class="rv-news-date">2026.10.12</span>
+            <div>
+              <h3>年度社区投票通道正式开启</h3>
+              <p>面向全体用户开放，投票结果将在年终特别企划中公布，入选作品获得官方展映与推荐位。</p>
+            </div>
+          </article>
+        </div>
+
+        <div>
+          <div class="rv-partner-grid">
+            <div class="rv-partner"><b>光栈影像</b>设备支持</div>
+            <div class="rv-partner"><b>拾帧工作室</b>联合制作</div>
+            <div class="rv-partner"><b>南岸声场</b>音频合作</div>
+            <div class="rv-partner"><b>像素书屋</b>内容共创</div>
+          </div>
+          <div class="rv-side-card" style="margin-top:16px;">
+            <h4>合作原则</h4>
+            <p style="font-size:13px;color:var(--rv-muted);margin:0;">r星视频与合作伙伴共同维护内容品质与版权规范，所有合作内容均会明确标注。我们欢迎更多机构加入，让优质影像被更多人看见。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M12 FAQ + M13 联系投稿 -->
+  <section class="rv-section" id="rv-faq">
+    <div class="rv-wrap">
+      <div class="rv-section-head">
+        <div>
+          <h2>帮助中心与联系投稿</h2>
+          <p>关于r星视频官方网站的常见问题，以及创作者最关心的联系渠道。</p>
+        </div>
+      </div>
+
+      <div class="rv-faq">
+        <details open>
+          <summary>在r星视频投稿需要满足什么条件？</summary>
+          <p>账号完成实名认证后即可投稿。作品需为原创或已获得明确授权，画面规格建议不低于 1080P，时长以 1 至 20 分钟为宜。提交后编辑会在 5 个工作日内给出反馈。</p>
+        </details>
+        <details>
+          <summary>官方专题企划多久更新一次？</summary>
+          <p>专题以季度为节奏推进，每个专题包含 3 至 5 组内容。更新状态会在专题卡片上标注，完结后仍可完整回看，方便创作者作为学习资料使用。</p>
+        </details>
+        <details>
+          <summary>比赛报名与投票结果在哪里查看？</summary>
+          <p>比赛报名信息通过顶部公告条与动态区同步发布。投票结果与评审意见在专题页公示，所有数据可追溯，确保过程透明。</p>
+        </details>
+        <details>
+          <summary>作品被采用后如何获得推荐？</summary>
+          <p>入选精品内容的作品会进入焦点区与作者矩阵展示，并获得官方发布渠道推荐。同时我们会给出数据反馈，帮助创作者了解观众偏好。</p>
+        </details>
+        <details>
+          <summary>支持哪些格式的上传与下载？</summary>
+          <p>上传支持常见视频容器格式，画质建议使用高码率源文件。创作者可在个人后台下载自己的作品存档，官方不设额外限制。</p>
+        </details>
+        <details>
+          <summary>如何加入r星视频创作者扶持计划？</summary>
+          <p>通过首页或帮助中心的投稿入口提交作品与创作计划即可。入选者会获得拍摄指导、剪辑工作流支持与阶段曝光资源，计划每季度开放一次。</p>
+        </details>
+      </div>
+
+      <div class="rv-side-card" style="margin-top:20px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+        <div>
+          <h4 style="margin-bottom:6px;">投稿与合作联系</h4>
+          <p style="font-size:13px;color:var(--rv-muted);margin:0;">合作邮箱：partner@rstarvideo.example ｜ 投稿通道：官网首页「创作者投稿」入口</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="rv-btn rv-btn-primary" id="rvOpenSubmit2">立即投稿</button>
+          <button class="rv-btn rv-btn-ghost" id="rvShareBtn2">分享给朋友</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rv-footer">
+  <div class="rv-wrap">
+    <div class="rv-footer-grid">
+      <div>
+        <h4>r星视频 · 官方网站</h4>
+        <p>专注游戏文化影像的垂直内容品牌，以原创、高清与专业制作为核心，构建值得信赖的内容生态，陪伴创作者持续成长。</p>
+        <p style="margin-top:10px;">© 2026 r星视频 版权所有 · 持续运营中</p>
+      </div>
+      <div>
+        <h4>内容入口</h4>
+        <ul>
+          <li><a href="#rv-focus">焦点内容</a></li>
+          <li><a href="#rv-topics">专题企划</a></li>
+          <li><a href="#rv-authors">创作者矩阵</a></li>
+          <li><a href="#rv-article">品牌解析</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方服务</h4>
+        <ul>
+          <li><a href="#rv-news">企业动态</a></li>
+          <li><a href="#rv-faq">帮助中心</a></li>
+          <li><a href="#rv-faq">投稿与报名</a></li>
+          <li><a href="#rv-reviews">社区口碑</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于品牌</h4>
+        <ul>
+          <li>深耕游戏文化影像</li>
+          <li>行业领先的原创标准</li>
+          <li>用户至上的社区准则</li>
+          <li>备案号：影字第 2026-0118 号</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rv-footer-bottom">
+      <span>r星视频官方网站 · 所有原创内容受版权保护，未经授权请勿转载</span>
+      <span>官方发布 · 品质内容 · 值得信赖</span>
+    </div>
+  </div>
+</footer>
+
+<button class="rv-top" id="rvTopBtn" aria-label="回到顶部">↑</button>
+
+<!-- 通用弹窗 -->
+<div class="rv-modal-mask" id="rvModalMask">
+  <div class="rv-modal" role="dialog" aria-modal="true" aria-labelledby="rvModalTitle">
+    <button class="rv-modal-close" id="rvModalClose" aria-label="关闭弹窗">×</button>
+    <h3 id="rvModalTitle">提示</h3>
+    <div id="rvModalBody"></div>
+  </div>
+</div>
+
+<div class="rv-toast" id="rvToast" role="status" aria-live="polite">已复制</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var toastEl = document.getElementById('rvToast');
+  var toastTimer = null;
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('rv-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('rv-show'); }, 1900);
+  }
+
+  /* 移动端导航 */
+  var burger = document.getElementById('rvBurger');
+  var nav = document.getElementById('rvNav');
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('rv-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      nav.classList.remove('rv-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* 搜索前端反馈 */
+  var searchInput = document.getElementById('rvSearchInput');
+  var searchHint = document.getElementById('rvSearchHint');
+  var searchIndex = [
+    '林照野 · 光影构成课 · 深度测评',
+    '陈拾光 · 动作捕捉幕后 · 创作幕后',
+    '苏晚舟 · 行业观察 · 数据解读',
+    '周叙 · 人物访谈 · 玩家故事',
+    '程一白 · 调色技巧 · 剪辑流程',
+    '阿岚 · 剧情短片 · 独立创作',
+    '夜行洛圣都 · 专题企划',
+    '创作者成长季 · 专题企划',
+    '城市探索挑战赛 · 比赛报名'
+  ];
+  function doSearch(){
+    var q = searchInput.value.trim();
+    if(!q){
+      searchHint.classList.remove('rv-show');
+      searchHint.innerHTML = '';
+      return;
+    }
+    var matched = searchIndex.filter(function(item){
+      return item.toLowerCase().indexOf(q.toLowerCase()) > -1;
+    });
+    if(matched.length){
+      searchHint.innerHTML = '找到 <b>' + matched.length + '</b> 条相关内容：' + matched.slice(0,3).map(function(s){return '「'+s+'」';}).join('、');
+    }else{
+      searchHint.innerHTML = '暂未匹配到「<b>' + q.replace(/[<>&]/g,'') + '</b>」，可尝试“测评”“访谈”或“专题”。';
+    }
+    searchHint.classList.add('rv-show');
+  }
+  var searchTimer = null;
+  searchInput.addEventListener('input', function(){
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(doSearch, 260);
+  });
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ clearTimeout(searchTimer); doSearch(); }
+  });
+  document.addEventListener('click', function(e){
+    if(!searchHint.contains(e.target) && e.target !== searchInput){
+      searchHint.classList.remove('rv-show');
+    }
+  });
+
+  /* 弹窗工具 */
+  var mask = document.getElementById('rvModalMask');
+  var modalTitle = document.getElementById('rvModalTitle');
+  var modalBody = document.getElementById('rvModalBody');
+  function openModal(title, html){
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    mask.classList.add('rv-show');
+  }
+  function closeModal(){ mask.classList.remove('rv-show'); }
+  document.getElementById('rvModalClose').addEventListener('click', closeModal);
+  mask.addEventListener('click', function(e){ if(e.target === mask) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  /* 点赞 / 收藏 / 复制 / 反馈 */
+  function parseCount(text){
+    var n = parseInt(text.replace(/[^\d]/g,''), 10);
+    return isNaN(n) ? 0 : n;
+  }
+  function formatCount(n){
+    return n >= 10000 ? (n/10000).toFixed(1) + '万' : String(n);
+  }
+  function copyText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).then(function(){ return true; }).catch(function(){ return fallbackCopy(text); });
+    }
+    return Promise.resolve(fallbackCopy(text));
+  }
+  function fallbackCopy(text){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      return true;
+    }catch(err){ return false; }
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.rv-act button');
+    if(!btn) return;
+    var act = btn.getAttribute('data-act');
+    var wrap = btn.closest('.rv-act');
+    var key = 'rv_state_' + (wrap ? wrap.getAttribute('data-video') : '') + '_' + act;
+
+    if(act === 'like'){
+      var liked = btn.classList.toggle('rv-on');
+      var base = btn.textContent.replace(/[♡♥\s点赞]/g,'');
+      if(liked){
+        btn.textContent = '♥ 已赞';
+        showToast('已为这条内容点赞');
+      }else{
+        btn.textContent = '♡ 点赞';
+        showToast('已取消点赞');
+      }
+    }else if(act === 'save'){
+      var saved = btn.classList.toggle('rv-saved');
+      btn.textContent = saved ? '★ 已收藏' : '☆ 收藏';
+      showToast(saved ? '已加入收藏夹' : '已取消收藏');
+    }else if(act === 'copy'){
+      copyText('r星视频 · 官方内容分享链接').then(function(ok){
+        showToast(ok ? '链接已复制，可分享给朋友' : '复制失败，请手动选择文本');
+      });
+    }else if(act === 'report'){
+      openModal('内容反馈', '<p>感谢你帮助社区保持品质。请选择反馈类型，我们会尽快核实处理。</p><ul><li>画面或音轨异常</li><li>信息标注有误</li><li>版权与授权疑问</li><li>其他建议</li></ul><p style="margin-top:12px;color:var(--rv-accent);">反馈已进入审核队列，通常 2 个工作日内回应。</p>');
+    }
+  });
+
+  /* 作者弹窗 */
+  var authorData = {
+    '林照野': '深度测评方向创作者，作品 126 支，关注 18.4 万。擅长把复杂的画面语言拆成可执行步骤，坚持每支视频给出可复用的拍摄结论。',
+    '陈拾光': '创作幕后方向创作者，作品 94 支，关注 12.7 万。专注动捕与拍摄现场记录，用细节呈现影像制作的真实过程。',
+    '苏晚舟': '行业观察方向创作者，作品 71 支，关注 9.8 万。以数据回应创作问题，内容常附样本说明，是新人常用的入门参考。',
+    '周叙': '人物访谈方向创作者，作品 58 支，关注 7.6 万。访谈风格温和，擅长在普通玩家身上找到打动人的细节。',
+    '程一白': '实用技巧方向创作者，作品 140 支，关注 15.2 万。职业剪辑师，教学只讲原理不推销插件，流程清晰可跟做。',
+    '阿岚': '剧情短片方向创作者，作品 39 支，关注 6.3 万。非科班独立导演，作品从玩家日常取材，正在筹备第一部长片。'
+  };
+  document.querySelectorAll('.rv-author-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name = btn.getAttribute('data-author');
+      var info = authorData[name] || '这位创作者的档案正在整理中。';
+      openModal(name + ' · 创作者档案', '<p>' + info + '</p><p style="color:var(--rv-muted);font-size:12.5px;">可通过焦点内容与专题企划查看其代表作品，官方将持续更新创作者档案。</p>');
+    });
+  });
+
+  /* 投稿弹窗 */
+  function submitModal(){
+    openModal('创作者投稿', '<p>r星视频欢迎原创高清作品。请准备以下信息后，通过官方投稿入口提交：</p><ul><li>作品标题与 80 字以内简介</li><li>视频源文件或高清链接</li><li>创作说明与素材授权情况</li><li>联系方式与期望发布档期</li></ul><p style="margin-top:12px;">编辑会在 5 个工作日内反馈，入选作品将进入精品内容池并获得官方推荐。</p>');
+  }
+  document.getElementById('rvOpenSubmit').addEventListener('click', submitModal);
+  document.getElementById('rvOpenSubmit2').addEventListener('click', submitModal);
+
+  /* 分享 */
+  function shareModal(){
+    openModal('分享 r星视频', '<p>把官网分享给同样关注游戏影像的朋友：</p><ul><li>复制链接，粘贴到聊天窗口或社区</li><li>在社交平台推荐你喜欢的专题</li><li>邀请朋友参与年度社区投票</li></ul><p style="margin-top:12px;color:var(--rv-accent);">感谢你帮助社区被更多人看见。</p>');
+  }
+  document.getElementById('rvShareBtn').addEventListener('click', shareModal);
+  document.getElementById('rvShareBtn2').addEventListener('click', shareModal);
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('rvTopBtn');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ topBtn.classList.add('rv-show'); }
+    else{ topBtn.classList.remove('rv-show'); }
+  }, {passive:true});
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 锚点平滑滚动 —— 预留吸顶高度 */
+  var stickyEl = document.querySelector('.rv-sticky');
+  function stickyHeight(){
+    return stickyEl ? stickyEl.offsetHeight : 0;
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href');
+      if(id.length < 2) return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.scrollY - stickyHeight() - 10;
+      window.scrollTo({top: Math.max(y,0), behavior:'smooth'});
+      history.replaceState(null, '', id);
+    });
+  });
+
+  /* 数据数字滚动 */
+  function animateNumbers(){
+    var stats = document.querySelectorAll('.rv-stat b, .rv-author-figures b');
+    if(!stats.length || !window.IntersectionObserver) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el = entry.target;
+          if(el.dataset.rvAnimated) return;
+          el.dataset.rvAnimated = '1';
+          var raw = el.textContent;
+          var num = parseFloat(raw.replace(/[^\d.]/g,''));
+          if(isNaN(num)){ return; }
+          var suffix = raw.replace(/[\d.,]/g,'');
+          var isDecimal = raw.indexOf('.') > -1;
+          var start = null;
+          var duration = 900;
+          function step(ts){
+            if(!start) start = ts;
+            var p = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            var val = num * eased;
+            el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val).toLocaleString('en-US')) + suffix;
+            if(p < 1){ requestAnimationFrame(step); }
+            else{ el.textContent = raw; }
+          }
+          requestAnimationFrame(step);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.4});
+    stats.forEach(function(s){ io.observe(s); });
+  }
+  animateNumbers();
+
+})();
+</script>
+</body>
+  </html>
